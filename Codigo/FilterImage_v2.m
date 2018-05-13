@@ -12,13 +12,11 @@ nfilters = 3;
 n = 1;
 in_I = im2double(in_I);
 in_I = (in_I - mean(in_I(:)) ) / std(in_I(:));
-disp([min(in_I(:)), max(in_I(:) )]);
 out_I = zeros( size(in_I,1), size(in_I,2), nfilters ); 
 
 
 % filter = laplacian_of_gaussian(5);
 % out_I(:,:,n) = imfilter( in_I, filter, 'symmetric');
-% % figure, imshow(out_I(:,:,n) , []);
 % n = n+1;
 
 % filter = getSobelFilter('y');
@@ -27,28 +25,20 @@ out_I = zeros( size(in_I,1), size(in_I,2), nfilters );
 
 % filter = gabor_fn(bw,gamma,psi(1),lambda,theta ) + 1i * gabor_fn(bw,gamma,psi(2),lambda,theta );
 % out_I(:,:,n) = abs(imfilter( in_I, filter, 'symmetric'));
-% % figure, imshow(out_I(:,:,n), [])
 % n = n+1;
-% 
+
 % filter = gabor_fn(bw,gamma,psi(1),lambda,theta + pi/4) + 1i * gabor_fn(bw,gamma,psi(2),lambda,theta + pi/4);
 % out_I(:,:,n) = abs(imfilter( in_I, filter, 'symmetric'));
-% % figure, imshow(out_I(:,:,n), [])
 % n = n+1;
-% 
+
 % filter = gabor_fn(bw,gamma,psi(1),lambda,theta + pi/2) + 1i * gabor_fn(bw,gamma,psi(2),lambda,theta + pi/2);
 % out_I(:,:,n) = abs(imfilter( in_I, filter, 'symmetric'));
-% % figure, imshow(out_I(:,:,n), [])
 % n = n+1;
 
 out_I(:,:,n) = imgaussfilt(in_I, 2);
-% figure, imshow(out_I(:,:,n), []);
 n = n+1;
  
 out_I(:,:,n) = GetLBPImage(in_I);
-% figure, imshow(out_I(:,:,n), []);
-% [c,x] = imhist( out_I(:,:,n), 18 ) ;
-% PlotImgHist(out_I(:,:,n), x,c)
-% figure, imshow( out_I(:,:,n) >= 0.22 & out_I(:,:,n) <= 0.24);
 n = n+1;
 
 out_I(:,:,n) = in_I;
