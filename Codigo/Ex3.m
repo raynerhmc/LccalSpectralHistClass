@@ -39,7 +39,7 @@ toc;
 
 %% Step 4: Computing distance image 
 disp('-----------------> Computing Pattern Image <-------------------');
-mode = 'FgMore'; 
+mode = 'FgOne'; 
 tic;
 switch mode
     case 'FgOne'
